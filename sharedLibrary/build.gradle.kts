@@ -20,17 +20,24 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
+        name = "MeasureConverterPod"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
-        version = "1.0.0"
+        version = "2.0.0"
         ios.deploymentTarget = "14.1"
-        source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
-        publishDir = project.file("pods")
-        podfile = project.file("../iosSampleApp/Podfile")
+//        source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
+//        publishDir = project.file("pods")
+//        podfile = project.file("../iosSampleApp/Podfile")
+
         framework {
             baseName = "MeasureConverter"
+            isStatic = true
 //            outputDirectory =  project.file("pods")
         }
+
+        // Maps custom Xcode configuration to NativeBuildType
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
     
     sourceSets {

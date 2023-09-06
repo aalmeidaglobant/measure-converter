@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'sharedLibrary'
-    spec.version                  = '1.0.0'
+    spec.name                     = 'MeasureConverterPod'
+    spec.version                  = '2.0.0'
     spec.homepage                 = 'Link to the Shared Module homepage'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
                 
     spec.script_phases = [
         {
-            :name => 'Build sharedLibrary',
+            :name => 'Build MeasureConverterPod',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

@@ -1,5 +1,5 @@
 import SwiftUI
-import sharedLibrary
+import MeasureConverter
 
 struct ContentView: View {
 	let measureConverter = MeasureConverterSdk()
