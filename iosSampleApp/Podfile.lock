@@ -1,0 +1,16 @@
+PODS:
+  - sharedLibrary (1.0.0)
+
+DEPENDENCIES:
+  - sharedLibrary (from `../sharedLibrary`)
+
+EXTERNAL SOURCES:
+  sharedLibrary:
+    :path: "../sharedLibrary"
+
+SPEC CHECKSUMS:
+  sharedLibrary: 4168b0d161afb6f81bc616ad40d320d1ca1d5ed1
+
+PODFILE CHECKSUM: e776dd5e94e90d73c118e45162933634d93ae4dc
+
+COCOAPODS: 1.12.1

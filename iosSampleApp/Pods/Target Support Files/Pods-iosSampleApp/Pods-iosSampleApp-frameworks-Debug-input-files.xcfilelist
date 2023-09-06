@@ -1,0 +1,2 @@
+${PODS_ROOT}/Target Support Files/Pods-iosSampleApp/Pods-iosSampleApp-frameworks.sh
+${PODS_ROOT}/../../sharedLibrary/build/cocoapods/framework/MeasureConverter.framework
