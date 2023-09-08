@@ -30,7 +30,7 @@ kotlin {
 //        podfile = project.file("../iosSampleApp/Podfile")
 
         framework {
-            baseName = "MeasureConverter"
+            baseName = "MeasureConverterPod"
             isStatic = true
 //            outputDirectory =  project.file("pods")
         }
