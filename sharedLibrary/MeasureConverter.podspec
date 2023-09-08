@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'MeasureConverterPod'
+    spec.name                     = 'MeasureConverter'
     spec.version                  = '3.0.0'
     spec.homepage                 = 'Link to the Shared Module homepage'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = 'Some description for the Shared Module'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/MeasureConverterPod.framework'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/MeasureConverter.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
                 
                 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':sharedLibrary',
-        'PRODUCT_MODULE_NAME' => 'MeasureConverterPod',
+        'PRODUCT_MODULE_NAME' => 'MeasureConverter',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build MeasureConverterPod',
+            :name => 'Build MeasureConverter',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

@@ -20,7 +20,7 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        name = "MeasureConverterPod"
+        name = "MeasureConverter"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         version = "3.0.0"
@@ -30,8 +30,8 @@ kotlin {
 //        podfile = project.file("../iosSampleApp/Podfile")
 
         framework {
-            baseName = "MeasureConverterPod"
-            isStatic = true
+            baseName = "MeasureConverter"
+            isStatic = false
 //            outputDirectory =  project.file("pods")
         }
 
