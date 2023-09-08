@@ -25,19 +25,22 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         version = "3.0.0"
         ios.deploymentTarget = "14.1"
-//        source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
-//        publishDir = project.file("pods")
+        source =
+            ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version', :branch => 'develop'"
+        publishDir = project.file("../Vendor")
 //        podfile = project.file("../iosSampleApp/Podfile")
 
         framework {
             baseName = "MeasureConverter"
-            isStatic = false
-//            outputDirectory =  project.file("pods")
+            isStatic = true
+            outputDirectory = project.file("../Vendor")
         }
 
         // Maps custom Xcode configuration to NativeBuildType
-        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
-        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] =
+            org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] =
+            org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
 
     sourceSets {
