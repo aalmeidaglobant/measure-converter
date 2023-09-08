@@ -1,7 +1,11 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("co.touchlab.faktory.kmmbridge")
+
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -15,6 +19,7 @@ kotlin {
             }
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -27,13 +32,13 @@ kotlin {
         ios.deploymentTarget = "14.1"
         source =
             ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version', :branch => 'develop'"
-        publishDir = project.file("../Vendor")
+//        publishDir = project.file("../Pods/$version/$name")
 //        podfile = project.file("../iosSampleApp/Podfile")
 
         framework {
             baseName = "MeasureConverter"
             isStatic = true
-            outputDirectory = project.file("../Vendor")
+//            outputDirectory = project.file("../../Pods")
         }
 
         // Maps custom Xcode configuration to NativeBuildType
@@ -42,6 +47,21 @@ kotlin {
         xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] =
             org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
+
+//    val xcFramework = XCFramework(name)
+//    val iosTargets = listOf(
+//        iosX64(),
+//        iosArm64(),
+//        iosSimulatorArm64()
+//    )
+//    iosTargets.forEach {
+//        it.binaries {
+//            framework {
+//                baseName = name
+//                xcFramework.add(this)
+//            }
+//        }
+//    }
 
     sourceSets {
         val commonMain by getting {
@@ -63,4 +83,13 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+
+kmmbridge {
+    mavenPublishArtifacts()
+    githubReleaseVersions()
+    spm()
+    cocoapods("git@github.com:aalmeidaglobant/measure-converter.git")
+    versionPrefix.set("1.0")
+    //etc
 }
