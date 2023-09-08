@@ -20,7 +20,7 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        name = "MeasureConverterPod"
+        name = "MeasureConverter"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         version = "2.0.0"
