@@ -25,7 +25,7 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         version = "3.0.0"
         ios.deploymentTarget = "14.1"
-//        source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
+        source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
 //        publishDir = project.file("pods")
 //        podfile = project.file("../iosSampleApp/Podfile")
 
