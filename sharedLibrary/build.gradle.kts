@@ -32,7 +32,6 @@ kotlin {
         ios.deploymentTarget = "14.1"
         source =
             ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version', :branch => 'develop'"
-//        publishDir = project.file("../Pods/$version/$name")
 //        podfile = project.file("../iosSampleApp/Podfile")
 
         framework {
