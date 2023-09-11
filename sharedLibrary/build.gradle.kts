@@ -1,7 +1,31 @@
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("maven-publish")
+}
+
+group = "com.example.measure_converter"
+version = "1.0.1"
+
+
+publishing {
+    publications.withType<MavenPublication> {
+        artifactId = "MeasureConverter"
+    }
+
+    repositories {
+        maven{
+            url = uri((System.getenv("MAVEN_WRITE_URL")))
+
+            credentials {
+                password = System.getenv("MAVEN_PWD")
+                username = System.getenv("MAVEN_USERNAME")
+            }
+        }
+
+    }
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -9,6 +33,9 @@ kotlin {
     targetHierarchy.default()
 
     android {
+
+        publishLibraryVariants("release", "debug")
+
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -20,10 +47,10 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        name = "MeasureConverter"
+        name = "MeasureConverterPod"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
-        version = "3.0.0"
+        version = "1.0.0"
         ios.deploymentTarget = "14.1"
         source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
 //        publishDir = project.file("pods")
@@ -31,8 +58,6 @@ kotlin {
 
         framework {
             baseName = "MeasureConverter"
-            isStatic = true
-//            outputDirectory =  project.file("pods")
         }
 
         // Maps custom Xcode configuration to NativeBuildType
