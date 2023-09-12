@@ -1,4 +1,3 @@
-
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -7,7 +6,7 @@ plugins {
 }
 
 group = "com.example.measure_converter"
-version = "1.0.1"
+version = "1.0.0"
 
 
 publishing {
@@ -16,7 +15,7 @@ publishing {
     }
 
     repositories {
-        maven{
+        maven {
             url = uri((System.getenv("MAVEN_WRITE_URL")))
 
             credentials {
@@ -46,23 +45,28 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+
     cocoapods {
         name = "MeasureConverterPod"
         summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        version = "1.0.0"
+        homepage = "https://github.com/aalmeidaglobant/measure-converter"
+        version = "1.0.1"
         ios.deploymentTarget = "14.1"
-        source = ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version'"
+
+        source =
+            "{ :git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version' }"
 //        publishDir = project.file("pods")
 //        podfile = project.file("../iosSampleApp/Podfile")
-
+        license = "{ :type => 'MIT', :text => 'License text'}"
         framework {
             baseName = "MeasureConverter"
         }
 
         // Maps custom Xcode configuration to NativeBuildType
-        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
-        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] =
+            org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] =
+            org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
 
     sourceSets {

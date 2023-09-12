@@ -1,10 +1,10 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'MeasureConverterPod'
-    spec.version                  = '1.0.0'
-    spec.homepage                 = 'Link to the Shared Module homepage'
+    spec.version                  = '1.0.1'
+    spec.homepage                 = 'https://github.com/aalmeidaglobant/measure-converter'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
-    spec.license                  = ''
+    spec.license                  = { :type => 'MIT', :text => 'License text'}
     spec.summary                  = 'Some description for the Shared Module'
     spec.vendored_frameworks      = 'build/cocoapods/framework/MeasureConverter.framework'
     spec.libraries                = 'c++'
