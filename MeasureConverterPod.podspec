@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
     spec.authors                  = ''
     spec.license                  = { :type => 'MIT', :text => 'License text'}
     spec.summary                  = 'Some description for the Shared Module'
-    spec.vendored_frameworks      = 'MeasureConverter.xcframework'
+    spec.vendored_frameworks      = 'pods/debug/MeasureConverter.xcframework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
                 
