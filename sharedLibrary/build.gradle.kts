@@ -1,11 +1,30 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
-
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    id("co.touchlab.faktory.kmmbridge")
+    id("maven-publish")
+}
+val libVersion = "1.1.0"
+group = "com.example.measure_converter"
+version = libVersion
 
+
+publishing {
+    publications.withType<MavenPublication> {
+        artifactId = "MeasureConverter"
+    }
+
+    repositories {
+        maven {
+            url = uri((System.getenv("MAVEN_WRITE_URL")))
+
+            credentials {
+                password = System.getenv("MAVEN_PWD")
+                username = System.getenv("MAVEN_USERNAME")
+            }
+        }
+
+    }
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -13,32 +32,36 @@ kotlin {
     targetHierarchy.default()
 
     android {
+
+        publishLibraryVariants("release", "debug")
+
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
         }
     }
-
     iosX64()
     iosArm64()
     iosSimulatorArm64()
 
-    cocoapods {
-        name = "MeasureConverter"
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        version = "3.0.0"
-        ios.deploymentTarget = "14.1"
-        source =
-            ":git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version', :branch => 'develop'"
-//        podfile = project.file("../iosSampleApp/Podfile")
 
+    cocoapods {
+        name = "MeasureConverterPod"
+        summary = "Some description for the Shared Module"
+        homepage = "https://github.com/aalmeidaglobant/measure-converter"
+        ios.deploymentTarget = "14.1"
+        version = libVersion
+        source = "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$libVersion' }"
+        publishDir = rootProject.file("pods")
+//        podfile = project.file("../iosSampleApp/Podfile")
+        license = "{ :type => 'MIT', :text => 'License text'}"
         framework {
             baseName = "MeasureConverter"
-            isStatic = true
-//            outputDirectory = project.file("../../Pods")
         }
+
+        extraSpecAttributes["vendored_frameworks"] = "pods/debug/MeasureConverter.xcframework"
+
 
         // Maps custom Xcode configuration to NativeBuildType
         xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] =
@@ -46,21 +69,6 @@ kotlin {
         xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] =
             org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
-
-//    val xcFramework = XCFramework(name)
-//    val iosTargets = listOf(
-//        iosX64(),
-//        iosArm64(),
-//        iosSimulatorArm64()
-//    )
-//    iosTargets.forEach {
-//        it.binaries {
-//            framework {
-//                baseName = name
-//                xcFramework.add(this)
-//            }
-//        }
-//    }
 
     sourceSets {
         val commonMain by getting {
@@ -82,13 +90,4 @@ android {
     defaultConfig {
         minSdk = 24
     }
-}
-
-kmmbridge {
-    mavenPublishArtifacts()
-    githubReleaseVersions()
-    spm()
-    cocoapods("git@github.com:aalmeidaglobant/measure-converter.git")
-    versionPrefix.set("1.0")
-    //etc
 }

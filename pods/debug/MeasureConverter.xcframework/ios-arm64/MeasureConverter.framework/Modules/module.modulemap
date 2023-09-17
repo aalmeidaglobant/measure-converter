@@ -1,0 +1,8 @@
+framework module MeasureConverter {
+    umbrella header "MeasureConverter.h"
+
+    export *
+    module * { export * }
+
+    use Foundation
+}
