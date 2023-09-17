@@ -54,7 +54,7 @@ kotlin {
         ios.deploymentTarget = "14.1"
 
         source =
-            "{ :git => 'git@github.com:aalmeidaglobant/measure-converter.git', :tag => '$version' }"
+            "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$version' }"
 //        publishDir = project.file("pods")
 //        podfile = project.file("../iosSampleApp/Podfile")
         license = "{ :type => 'MIT', :text => 'License text'}"
