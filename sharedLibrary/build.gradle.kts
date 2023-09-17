@@ -4,7 +4,7 @@ plugins {
     id("com.android.library")
     id("maven-publish")
 }
-val libVersion = "1.1.0"
+val libVersion = "1.1.1"
 group = "com.example.measure_converter"
 version = libVersion
 
@@ -59,9 +59,6 @@ kotlin {
         framework {
             baseName = "MeasureConverter"
         }
-
-        extraSpecAttributes["vendored_frameworks"] = "pods/debug/MeasureConverter.xcframework"
-
 
         // Maps custom Xcode configuration to NativeBuildType
         xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] =
