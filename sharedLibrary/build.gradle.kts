@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.example.measure_converter"
-version = "1.0.1"
+version = "1.0.2"
 
 
 publishing {
@@ -50,7 +50,6 @@ kotlin {
         name = "MeasureConverterPod"
         summary = "Some description for the Shared Module"
         homepage = "https://github.com/aalmeidaglobant/measure-converter"
-        version = "1.0.1"
         ios.deploymentTarget = "14.1"
 
         source =
