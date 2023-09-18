@@ -136,7 +136,12 @@ task("publishDevXCFramework") {
 
             project.exec {
                 workingDir = File("$rootDir/pods")
-                commandLine("git", "push", "origin", "develop").standardOutput
+                commandLine("git", "tag", "$libVersion-debug").standardOutput
+            }
+
+            project.exec {
+                workingDir = File("$rootDir/pods")
+                commandLine("git", "push", "origin", "develop", "--tags").standardOutput
             }
         }
     }
