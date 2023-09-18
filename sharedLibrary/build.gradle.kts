@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     id("maven-publish")
 }
+val libName = "MeasureConverter"
 val libVersion = "1.1.2"
 group = "com.example.measure_converter"
 version = libVersion
@@ -11,7 +12,7 @@ version = libVersion
 
 publishing {
     publications.withType<MavenPublication> {
-        artifactId = "MeasureConverter"
+        artifactId = libName
     }
 
     repositories {
@@ -86,5 +87,57 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+    }
+}
+
+
+task("checkoutDev", type = Exec::class) {
+    workingDir = File("$rootDir/pods")
+    commandLine("git", "checkout", "develop").standardOutput
+}
+
+task("publishDevXCFramework") {
+    description = "Publish iOs framweork to the Cocoa Repo"
+
+
+    dependsOn("checkoutDev", "podPublishDebugXCFramework")
+
+    doLast {
+        val dir = File("$rootDir/pods/debug/${libName}Pod.podspec")
+        val tempFile = File("$rootDir/pods/debug/${libName}Pod.podspec.new")
+
+        val reader = dir.bufferedReader()
+        val writer = tempFile.bufferedWriter()
+        var currentLine: String?
+
+        while (reader.readLine().also { currLine -> currentLine = currLine } != null) {
+            if (currentLine?.startsWith("s.version") == true) {
+                writer.write("s.version       = \"${libVersion}\"" + System.lineSeparator())
+            } else {
+                writer.write(currentLine + System.lineSeparator())
+            }
+        }
+        writer.close()
+        reader.close()
+        val successful = tempFile.renameTo(dir)
+
+        if (successful) {
+
+            project.exec {
+                workingDir = File("$rootDir/pods")
+                commandLine(
+                    "git",
+                    "commit",
+                    "-a",
+                    "-m",
+                    "\"New dev release: ${libVersion}-debug}\""
+                ).standardOutput
+            }
+
+            project.exec {
+                workingDir = File("$rootDir/pods")
+                commandLine("git", "push", "origin", "develop").standardOutput
+            }
+        }
     }
 }
