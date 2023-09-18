@@ -96,8 +96,13 @@ task("checkoutDev", type = Exec::class) {
     commandLine("git", "checkout", "develop").standardOutput
 }
 
+task("checkoutMain", type = Exec::class) {
+    workingDir = File("$rootDir/pods")
+    commandLine("git", "checkout", "main").standardOutput
+}
+
 task("publishDevXCFramework") {
-    description = "Publish iOs framweork to the Cocoa Repo"
+    description = "Publish iOs framework to the Cocoa Repo"
 
 
     dependsOn("checkoutDev", "podPublishDebugXCFramework")
@@ -143,15 +148,56 @@ task("publishDevXCFramework") {
                 workingDir = File("$rootDir/pods")
                 commandLine("git", "push", "origin", "develop", "--tags").standardOutput
             }
+        }
+    }
+}
+
+task("publishReleaseXCFramework") {
+    description = "Publish iOs framework to the Cocoa Repo"
+
+
+    dependsOn("checkoutMain", "podPublishReleaseXCFramework")
+
+    doLast {
+        val dir = File("$rootDir/pods/release/${libName}Pod.podspec")
+        val tempFile = File("$rootDir/pods/release/${libName}Pod.podspec.new")
+
+        val reader = dir.bufferedReader()
+        val writer = tempFile.bufferedWriter()
+        var currentLine: String?
+
+        while (reader.readLine().also { currLine -> currentLine = currLine } != null) {
+            if (currentLine?.startsWith("s.version") == true) {
+                writer.write("s.version       = \"${libVersion}\"" + System.lineSeparator())
+            } else {
+                writer.write(currentLine + System.lineSeparator())
+            }
+        }
+        writer.close()
+        reader.close()
+        val successful = tempFile.renameTo(dir)
+
+        if (successful) {
 
             project.exec {
                 workingDir = File("$rootDir/pods")
-                commandLine("pod", "lib", "lint", "${libName}Pod.podspec").standardOutput
+                commandLine(
+                    "git",
+                    "commit",
+                    "-a",
+                    "-m",
+                    "\"New release: ${libVersion}}\""
+                ).standardOutput
             }
 
             project.exec {
                 workingDir = File("$rootDir/pods")
-                commandLine("pod", "repo", "push", "measure-converter-specs", "${libName}Pod.podspec").standardOutput
+                commandLine("git", "tag", libVersion).standardOutput
+            }
+
+            project.exec {
+                workingDir = File("$rootDir/pods")
+                commandLine("git", "push", "origin", "main", "--tags").standardOutput
             }
         }
     }
