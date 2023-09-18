@@ -5,6 +5,15 @@ plugins {
     id("maven-publish")
     id("co.touchlab.faktory.kmmbridge")
 }
+kmmbridge {
+    mavenPublishArtifacts()
+    manualVersions()
+    addGithubPackagesRepository()
+    spm()
+    cocoapods("git@github.com:aalmeidaglobant/measure-converter-specs.git")
+    versionPrefix.set(libVersion)
+    //etc
+}
 val libVersion = "1.1.2"
 
 group = "com.example.measure_converter"
@@ -91,12 +100,3 @@ android {
     }
 }
 
-kmmbridge {
-    mavenPublishArtifacts()
-    manualVersions()
-    addGithubPackagesRepository()
-    spm()
-    cocoapods("git@github.com:aalmeidaglobant/measure-converter-specs.git")
-    versionPrefix.set(libVersion)
-    //etc
-}
