@@ -3,11 +3,12 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("maven-publish")
+    id("co.touchlab.faktory.kmmbridge")
 }
+val libVersion = "1.1.2"
 
 group = "com.example.measure_converter"
-version = "1.0.2"
-
+version = libVersion
 
 publishing {
     publications.withType<MavenPublication> {
@@ -88,4 +89,14 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+
+kmmbridge {
+    mavenPublishArtifacts()
+    manualVersions()
+    addGithubPackagesRepository()
+    spm()
+    cocoapods("git@github.com:aalmeidaglobant/measure-converter-specs.git")
+    versionPrefix.set(libVersion)
+    //etc
 }
