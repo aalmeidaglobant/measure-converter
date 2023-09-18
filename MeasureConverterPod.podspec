@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'MeasureConverterPod'
-    spec.version                  = '1.1.1'
+    spec.version                  = '1.1.2'
     spec.homepage                 = 'https://github.com/aalmeidaglobant/measure-converter'
     spec.source                   = { :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '1.1.2' }
     spec.authors                  = ''
