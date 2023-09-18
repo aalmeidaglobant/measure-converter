@@ -3,25 +3,16 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("maven-publish")
-    id("co.touchlab.faktory.kmmbridge")
 }
-kmmbridge {
-    mavenPublishArtifacts()
-    manualVersions()
-    addGithubPackagesRepository()
-    spm()
-    cocoapods("git@github.com:aalmeidaglobant/measure-converter-specs.git")
-    versionPrefix.set(libVersion)
-    //etc
-}
-val libVersion = "1.1.2"
 
+val libVersion = "1.1.2"
+val libName = "MeasureConverter"
 group = "com.example.measure_converter"
 version = libVersion
 
 publishing {
     publications.withType<MavenPublication> {
-        artifactId = "MeasureConverter"
+        artifactId = libName
     }
 
     repositories {
@@ -64,7 +55,7 @@ kotlin {
 
         source =
             "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$version' }"
-//        publishDir = project.file("pods")
+        publishDir = project.file("pods")
 //        podfile = project.file("../iosSampleApp/Podfile")
         license = "{ :type => 'MIT', :text => 'License text'}"
         framework {
@@ -100,3 +91,53 @@ android {
     }
 }
 
+task("checkoutDev", type = Exec::class) {
+    workingDir = File("$rootDir/pods")
+    commandLine("git", "checkout", "develop").standardOutput
+}
+
+task("publishDevXCFramework") {
+    description = "Publish iOs framweork to the Cocoa Repo"
+
+
+    dependsOn("checkoutDev", "podPublishDebugXCFramework")
+
+    doLast {
+        val dir = File("$rootDir/pods/${libName}Pod.podspec")
+        val tempFile = File("$rootDir/pods/${libName}Pod.podspec.new")
+
+        val reader = dir.bufferedReader()
+        val writer = tempFile.bufferedWriter()
+        var currentLine: String?
+
+        while (reader.readLine().also { currLine -> currentLine = currLine } != null) {
+            if (currentLine?.startsWith("s.version") == true) {
+                writer.write("s.version       = \"${libVersion}\"" + System.lineSeparator())
+            } else {
+                writer.write(currentLine + System.lineSeparator())
+            }
+        }
+        writer.close()
+        reader.close()
+        val successful = tempFile.renameTo(dir)
+
+        if (successful) {
+
+            project.exec {
+                workingDir = File("$rootDir/pods")
+                commandLine(
+                    "git",
+                    "commit",
+                    "-a",
+                    "-m",
+                    "\"New dev release: ${libVersion}-debug}\""
+                ).standardOutput
+            }
+
+            project.exec {
+                workingDir = File("$rootDir/pods")
+                commandLine("git", "push", "origin", "develop").standardOutput
+            }
+        }
+    }
+}
