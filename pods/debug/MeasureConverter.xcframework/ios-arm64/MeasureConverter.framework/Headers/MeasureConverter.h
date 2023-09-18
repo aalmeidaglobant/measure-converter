@@ -145,6 +145,7 @@ __attribute__((swift_name("MeasureConverterSdk")))
 @interface MeasureConverterMeasureConverterSdk : MeasureConverterBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (float)celsiusToFahrenheitCelsius:(float)celsius __attribute__((swift_name("celsiusToFahrenheit(celsius:)")));
 - (float)centimeterToMeterCentimeter:(float)centimeter __attribute__((swift_name("centimeterToMeter(centimeter:)")));
 - (float)literToCubicMetersLiter:(float)liter __attribute__((swift_name("literToCubicMeters(liter:)")));
 - (float)meterToCentimeterMeter:(float)meter __attribute__((swift_name("meterToCentimeter(meter:)")));

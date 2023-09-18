@@ -4,7 +4,7 @@ plugins {
     id("com.android.library")
     id("maven-publish")
 }
-val libVersion = "1.1.1"
+val libVersion = "1.1.2"
 group = "com.example.measure_converter"
 version = libVersion
 
