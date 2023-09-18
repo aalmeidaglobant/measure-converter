@@ -5,7 +5,7 @@ plugins {
     id("maven-publish")
 }
 val libName = "MeasureConverter"
-val libVersion = "1.1.3"
+val libVersion = "1.1.4"
 group = "com.example.measure_converter"
 version = libVersion
 
