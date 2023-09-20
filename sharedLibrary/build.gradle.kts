@@ -4,11 +4,11 @@ plugins {
     id("com.android.library")
     id("maven-publish")
 }
+
 val libName = "MeasureConverter"
-val libVersion = "1.1.4"
+val libVersion = "1.1.3"
 group = "com.example.measure_converter"
 version = libVersion
-
 
 publishing {
     publications.withType<MavenPublication> {
@@ -24,7 +24,6 @@ publishing {
                 username = System.getenv("MAVEN_USERNAME")
             }
         }
-
     }
 }
 
