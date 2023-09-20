@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'MeasureConverterPod'
-    spec.version                  = '1.1.3'
+    spec.version                  = '1.1.4'
     spec.homepage                 = 'https://github.com/aalmeidaglobant/measure-converter'
-    spec.source                   = { :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '1.1.3' }
+    spec.source                   = { :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '1.1.4' }
     spec.authors                  = ''
     spec.license                  = { :type => 'MIT', :text => 'License text'}
     spec.summary                  = 'Some description for the Shared Module'

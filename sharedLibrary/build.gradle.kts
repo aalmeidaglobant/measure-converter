@@ -135,13 +135,13 @@ task("publishDevXCFramework") {
                     "commit",
                     "-a",
                     "-m",
-                    "\"New dev release: ${libVersion}-debug}\""
+                    "\"New dev release: ${libVersion}}\""
                 ).standardOutput
             }
 
             project.exec {
                 workingDir = File("$rootDir/pods")
-                commandLine("git", "tag", "$libVersion-debug").standardOutput
+                commandLine("git", "tag", "$libVersion").standardOutput
             }
 
             project.exec {
