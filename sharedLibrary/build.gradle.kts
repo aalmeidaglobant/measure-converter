@@ -105,7 +105,7 @@ task("publishDevXCFramework") {
     description = "Publish iOs framework to the Cocoa Repo"
 
 
-    dependsOn("checkoutDev", "podPublishDebugXCFramework")
+    dependsOn( "podPublishDebugXCFramework")
 
     doLast {
         val dir = File("$rootDir/pods/debug/${libName}Pod.podspec")
@@ -116,12 +116,12 @@ task("publishDevXCFramework") {
         var currentLine: String?
 
         while (reader.readLine().also { currLine -> currentLine = currLine } != null) {
-            if (currentLine?.startsWith("spec.version") == true) {
+            if (currentLine?.startsWith("    spec.version") == true) {
                 writer.write("spec.version       = \"${libVersion}\"" + System.lineSeparator())
             } else {
                 writer.write(currentLine + System.lineSeparator())
             }
-            if (currentLine?.startsWith("spec.vendored_frameworks") == true) {
+            if (currentLine?.startsWith("    spec.vendored_frameworks") == true) {
                 writer.write("spec.vendored_frameworks       = \"$rootDir/pods/debug/MeasureConverter.xcframework\"" + System.lineSeparator())
             } else {
                 writer.write(currentLine + System.lineSeparator())

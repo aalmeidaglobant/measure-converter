@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 Pod::Spec.new do |spec|
     spec.name                     = 'MeasureConverterPod'
     spec.name                     = 'MeasureConverterPod'
-    spec.version                  = '1.1.4'
+spec.version       = "1.1.4"
     spec.version                  = '1.1.4'
     spec.homepage                 = 'https://github.com/aalmeidaglobant/measure-converter'
     spec.homepage                 = 'https://github.com/aalmeidaglobant/measure-converter'
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
     spec.summary                  = 'Some description for the Shared Module'
     spec.summary                  = 'Some description for the Shared Module'
     spec.vendored_frameworks      = 'MeasureConverter.xcframework'
-    spec.vendored_frameworks      = 'MeasureConverter.xcframework'
+spec.vendored_frameworks       = "/Users/akmere.almeida/AndroidStudioProjects/MeasureConverter/pods/debug/MeasureConverter.xcframework"
     spec.libraries                = 'c++'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
