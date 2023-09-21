@@ -120,13 +120,22 @@ task("publishDevXCFramework") {
             } else {
                 writer.write(currentLine + System.lineSeparator())
             }
+            if (currentLine?.startsWith("s.vendored_frameworks") == true) {
+                writer.write("s.vendored_frameworks       = \"$rootDir/pods/debug/MeasureConverter.xcframework\"" + System.lineSeparator())
+            } else {
+                writer.write(currentLine + System.lineSeparator())
+            }
         }
         writer.close()
         reader.close()
         val successful = tempFile.renameTo(dir)
 
-        if (successful) {
+        copy {
+            from(tempFile.path)
+            into(rootDir.path)
+        }
 
+        if (successful) {
             project.exec {
                 workingDir = File("$rootDir/pods")
                 commandLine(
@@ -134,13 +143,13 @@ task("publishDevXCFramework") {
                     "commit",
                     "-a",
                     "-m",
-                    "\"New dev release: ${libVersion}-debug}\""
+                    "\"New dev release: ${libVersion}}\""
                 ).standardOutput
             }
 
             project.exec {
                 workingDir = File("$rootDir/pods")
-                commandLine("git", "tag", "$libVersion-debug").standardOutput
+                commandLine("git", "tag", libVersion).standardOutput
             }
 
             project.exec {
