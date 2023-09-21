@@ -121,11 +121,7 @@ task("publishDevXCFramework") {
             } else {
                 writer.write(currentLine + System.lineSeparator())
             }
-            if (currentLine?.startsWith("s.vendored_frameworks") == true) {
-                writer.write("s.vendored_frameworks       = \"$rootDir/pods/debug/MeasureConverter.xcframework\"" + System.lineSeparator())
-            } else {
-                writer.write(currentLine + System.lineSeparator())
-            }
+
         }
         writer.close()
         reader.close()
