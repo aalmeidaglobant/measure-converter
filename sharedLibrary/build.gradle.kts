@@ -132,8 +132,8 @@ task("publishDevXCFramework") {
         val successful = tempFile.renameTo(dir)
 
         copy {
-            from(tempFile.path)
-            into(rootDir.path)
+            from(tempFile)
+            into(rootDir)
         }
 
         if (successful) {
