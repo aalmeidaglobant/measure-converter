@@ -5,7 +5,7 @@ plugins {
     id("maven-publish")
 }
 val libName = "MeasureConverter"
-val libVersion = "1.1.4"
+val libVersion = "1.1.5"
 group = "com.example.measure_converter"
 version = libVersion
 
@@ -55,7 +55,7 @@ kotlin {
         version = libVersion
         source = "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$libVersion' }"
         publishDir = rootProject.file("pods")
-//        podfile = project.file("../iosSampleApp/Podfile")
+        podfile = project.file("../iosSampleApp/Podfile")
         license = "{ :type => 'MIT', :text => 'License text'}"
         framework {
             baseName = "MeasureConverter"
