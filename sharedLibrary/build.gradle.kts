@@ -141,6 +141,12 @@ task("publishDevXCFramework") {
                 workingDir = File("$rootDir/pods")
                 commandLine(
                     "git",
+                    "add",
+                    "."
+                ).standardOutput
+
+                commandLine(
+                    "git",
                     "commit",
                     "-a",
                     "-m",
