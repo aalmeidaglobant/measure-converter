@@ -116,12 +116,16 @@ task("publishDevXCFramework") {
         var currentLine: String?
 
         while (reader.readLine().also { currLine -> currentLine = currLine } != null) {
-            if (currentLine?.startsWith("s.version") == true) {
-                writer.write("s.version       = \"${libVersion}\"" + System.lineSeparator())
+            if (currentLine?.startsWith("spec.version") == true) {
+                writer.write("spec.version       = \"${libVersion}\"" + System.lineSeparator())
             } else {
                 writer.write(currentLine + System.lineSeparator())
             }
-
+            if (currentLine?.startsWith("spec.vendored_frameworks") == true) {
+                writer.write("spec.vendored_frameworks       = \"$rootDir/pods/debug/MeasureConverter.xcframework\"" + System.lineSeparator())
+            } else {
+                writer.write(currentLine + System.lineSeparator())
+            }
         }
         writer.close()
         reader.close()
