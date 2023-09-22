@@ -6,7 +6,7 @@ plugins {
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 val libName = "MeasureConverter"
-val libVersion = "1.1.5"
+val libVersion = "1.1.6"
 group = "com.example.measure_converter"
 version = libVersion
 
@@ -32,14 +32,16 @@ publishing {
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
+
     multiplatformSwiftPackage {
-        packageName("YourModuleName")
+        packageName("MeasureConverter")
         swiftToolsVersion("5.3")
         targetPlatforms {
             iOS { v("13") }
         }
         outputDirectory(File(rootDir, "/"))
     }
+
     android {
 
         publishLibraryVariants("release", "debug")

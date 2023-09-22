@@ -2,20 +2,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "YourModuleName",
+    name: "MeasureConverter",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "YourModuleName",
-            targets: ["YourModuleName"]
+            name: "MeasureConverter",
+            targets: ["MeasureConverter"]
         ),
     ],
     targets: [
         .binaryTarget(
-            name: "YourModuleName",
-            path: "./YourModuleName.xcframework"
+            name: "MeasureConverter",
+            path: "./MeasureConverter.xcframework"
         ),
     ]
 )
