@@ -5,7 +5,7 @@ struct ContentView: View {
 	let measureConverter = MeasureConverterSdk()
 
 	var body: some View {
-		Text("Centimeter to meter:\(measureConverter.centimeterToMeter(centimeter: 1000))")
+		Text("Celsius to Fahrenheit:\(measureConverter.celsiusToFahrenheit(celsius: 50.0))")
 	}
 }
 

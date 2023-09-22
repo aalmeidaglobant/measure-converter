@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.width(1000.dp),
                     color = MaterialTheme.colors.primary
                 ) {
-                    GreetingView(MeasureConverterSdk().centimeterToMeter(1000F).toString())
+                    GreetingView(MeasureConverterSdk().celsiusToFahrenheit(50F).toString())
                 }
             }
         }

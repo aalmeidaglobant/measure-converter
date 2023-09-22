@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("maven-publish")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 val libName = "MeasureConverter"
 val libVersion = "1.1.5"
@@ -31,7 +32,14 @@ publishing {
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
-
+    multiplatformSwiftPackage {
+        packageName("YourModuleName")
+        swiftToolsVersion("5.3")
+        targetPlatforms {
+            iOS { v("13") }
+        }
+        outputDirectory(File(rootDir, "/"))
+    }
     android {
 
         publishLibraryVariants("release", "debug")
@@ -55,7 +63,7 @@ kotlin {
         version = libVersion
         source = "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$libVersion' }"
         publishDir = rootProject.file("pods")
-        podfile = project.file("../iosSampleApp/Podfile")
+//        podfile = project.file("../iosSampleApp/Podfile")
         license = "{ :type => 'MIT', :text => 'License text'}"
         framework {
             baseName = "MeasureConverter"
