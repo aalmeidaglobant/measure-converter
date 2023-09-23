@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03E0AD302ABE1D2B002F09BE /* MeasureConverter in Frameworks */ = {isa = PBXBuildFile; productRef = 03E0AD2F2ABE1D2B002F09BE /* MeasureConverter */; };
+		03E0AD322ABE202B002F09BE /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E0AD312ABE202B002F09BE /* Test.storyboard */; };
+		03E0AD342ABE218E002F09BE /* TableTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0AD332ABE218E002F09BE /* TableTestTableViewController.swift */; };
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
@@ -15,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03E0AD312ABE202B002F09BE /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		03E0AD332ABE218E002F09BE /* TableTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTestTableViewController.swift; sourceTree = "<group>"; };
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1C329FF7CB56D8ACBB60F3AB /* Pods-iosSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosSampleApp.release.xcconfig"; path = "Target Support Files/Pods-iosSampleApp/Pods-iosSampleApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -31,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E0AD302ABE1D2B002F09BE /* MeasureConverter in Frameworks */,
 				4FEE2EBCE2B8E3B98A606239 /* Pods_iosSampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +63,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				03E0AD312ABE202B002F09BE /* Test.storyboard */,
 				7555FF7D242A565900829871 /* iosSampleApp */,
 				7555FF7C242A565900829871 /* Products */,
 				B1B98632ECFCF893491FA4D0 /* Pods */,
@@ -80,6 +87,7 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				03E0AD332ABE218E002F09BE /* TableTestTableViewController.swift */,
 			);
 			path = iosSampleApp;
 			sourceTree = "<group>";
@@ -90,7 +98,6 @@
 				73DCA5B5C60CF17A45F1507B /* Pods-iosSampleApp.debug.xcconfig */,
 				1C329FF7CB56D8ACBB60F3AB /* Pods-iosSampleApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -112,6 +119,9 @@
 			dependencies = (
 			);
 			name = iosSampleApp;
+			packageProductDependencies = (
+				03E0AD2F2ABE1D2B002F09BE /* MeasureConverter */,
+			);
 			productName = iosSampleApp;
 			productReference = 7555FF7B242A565900829871 /* iosSampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+				03E0AD2E2ABE1D2B002F09BE /* XCRemoteSwiftPackageReference "measure-converter" */,
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E0AD322ABE202B002F09BE /* Test.storyboard in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
 			);
@@ -208,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E0AD342ABE218E002F09BE /* TableTestTableViewController.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
@@ -341,6 +356,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosSampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,6 +377,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosSampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,6 +411,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		03E0AD2E2ABE1D2B002F09BE /* XCRemoteSwiftPackageReference "measure-converter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aalmeidaglobant/measure-converter";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		03E0AD2F2ABE1D2B002F09BE /* MeasureConverter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03E0AD2E2ABE1D2B002F09BE /* XCRemoteSwiftPackageReference "measure-converter" */;
+			productName = MeasureConverter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

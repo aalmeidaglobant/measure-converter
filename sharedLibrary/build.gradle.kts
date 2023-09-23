@@ -6,7 +6,7 @@ plugins {
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 val libName = "MeasureConverter"
-val libVersion = "1.1.6"
+val libVersion = "1.2.0"
 group = "com.example.measure_converter"
 version = libVersion
 
