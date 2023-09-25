@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "measure-converter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aalmeidaglobant/measure-converter",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "48fb7b171a6ddc4897963c80b62124a2f339b281"
+      }
+    }
+  ],
+  "version" : 2
+}
