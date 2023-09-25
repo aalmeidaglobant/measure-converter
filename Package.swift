@@ -15,7 +15,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "MeasureConverter",
-            path: "./pods/debug/MeasureConverter.xcframework"
+            path: "./native/debug/MeasureConverter.xcframework"
         ),
     ]
 )

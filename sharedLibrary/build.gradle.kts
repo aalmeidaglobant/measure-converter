@@ -6,7 +6,7 @@ plugins {
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 val libName = "MeasureConverter"
-val libVersion = "1.1.6"
+val libVersion = "1.2.1"
 group = "com.example.measure_converter"
 version = libVersion
 
@@ -64,7 +64,7 @@ kotlin {
         ios.deploymentTarget = "14.1"
         version = libVersion
         source = "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$libVersion' }"
-        publishDir = rootProject.file("pods")
+        publishDir = rootProject.file("native")
 //        podfile = project.file("../iosSampleApp/Podfile")
         license = "{ :type => 'MIT', :text => 'License text'}"
         framework {
