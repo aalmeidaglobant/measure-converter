@@ -1,5 +1,5 @@
 target 'iosSampleApp' do
   use_frameworks!
   platform :ios, '14.1'
-  pod 'sharedLibrary', :path => '../sharedLibrary'
+  pod 'MeasureConverterPod', :path => '../sharedLibrary'
 end

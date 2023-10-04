@@ -54,8 +54,9 @@ kotlin {
         version = libVersion
         source = "{ :git => 'https://github.com/aalmeidaglobant/measure-converter.git', :tag => '$libVersion' }"
         publishDir = rootProject.file("pods")
-//        podfile = project.file("../iosSampleApp/Podfile")
+        podfile = project.file("../iosSampleApp/Podfile")
         license = "{ :type => 'MIT', :text => 'License text'}"
+
         framework {
             baseName = "MeasureConverter"
         }

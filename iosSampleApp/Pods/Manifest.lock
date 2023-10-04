@@ -1,16 +1,16 @@
 PODS:
-  - sharedLibrary (1.0.0)
+  - MeasureConverterPod (1.1.3)
 
 DEPENDENCIES:
-  - sharedLibrary (from `../sharedLibrary`)
+  - MeasureConverterPod (from `../sharedLibrary`)
 
 EXTERNAL SOURCES:
-  sharedLibrary:
+  MeasureConverterPod:
     :path: "../sharedLibrary"
 
 SPEC CHECKSUMS:
-  sharedLibrary: 4168b0d161afb6f81bc616ad40d320d1ca1d5ed1
+  MeasureConverterPod: fb57d54899447a8eb4c90364f83683347e903ce9
 
-PODFILE CHECKSUM: e776dd5e94e90d73c118e45162933634d93ae4dc
+PODFILE CHECKSUM: 0115b1db1f01fdb9bbf8a10e4bfb332bfb7b1923
 
 COCOAPODS: 1.12.1
